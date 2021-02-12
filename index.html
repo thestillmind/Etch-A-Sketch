@@ -49,6 +49,7 @@
 <main>
     <div class="grid-container">
 
+       <!-- <div class="item"></div>
         <div class="item"></div>
         <div class="item"></div>
         <div class="item"></div>
@@ -63,8 +64,7 @@
         <div class="item"></div>
         <div class="item"></div>
         <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
+        <div class="item"></div>-->
 
     </div>
 
@@ -72,7 +72,19 @@
 
 
 <script>
-.
+const gridContainer=document.querySelector('.grid-container');
+
+
+for(let i=0;i<16;i++){
+console.log(i);
+const gridItem=document.createElement('div');
+gridItem.classList='item';
+gridContainer.appendChild(gridItem);
+}
+
+const gridItems=Array.from(document.querySelectorAll('.item'));
+gridItems.forEach(item=>console.log(item));
+gridItems.forEach(item=>item.addEventListener('mouseover',()=>alert("click!")));
 
 </script>
 
