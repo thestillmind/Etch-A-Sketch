@@ -76,15 +76,19 @@ const gridContainer=document.querySelector('.grid-container');
 
 
 for(let i=0;i<16;i++){
-console.log(i);
+
 const gridItem=document.createElement('div');
 gridItem.classList='item';
 gridContainer.appendChild(gridItem);
 }
 
 const gridItems=Array.from(document.querySelectorAll('.item'));
-gridItems.forEach(item=>console.log(item));
-gridItems.forEach(item=>item.addEventListener('mouseover',()=>alert("click!")));
+//gridItems.forEach(item=>console.log(item));
+gridItems.forEach(divItem=>divItem.addEventListener('mouseover', ()=>changeColor(divItem)));
+
+function changeColor(e){
+  e.style.backgroundColor="green";
+}
 
 </script>
 
