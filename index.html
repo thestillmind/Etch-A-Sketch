@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta id="metaDescrip" name="description"
         content="This a recreation of the etch-a-sketch toy, but now it's on a web page!">
-        <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
     <style>
         @font-face {
             font-family: 'Ubuntu', sans-serif;
@@ -32,17 +32,22 @@
         h1 {
             text-align: center;
         }
+
+        main {
+            margin: auto;
+            text-align: center;
+        }
+
         .grid-container {
-            margin:auto;
-            width:500px;
-            height:500px;
+            margin: auto;
+            width: 500px;
+            height: 500px;
             display: grid;
-            grid-template-columns: repeat(4,auto);
-         }
+         
+        }
 
         .item {
-            width: 125px;
-            height: 125px;
+           
             background-color: red;
         }
     </style>
@@ -52,7 +57,7 @@
 
 <h1>Etch-a-Sketch!</h1>
 <main>
-   
+    <button>Grid size?</button>
     <div class="grid-container">
 
 
@@ -62,23 +67,49 @@
 
 
 <script>
-const gridContainer=document.querySelector('.grid-container');
+    const btn = document.querySelector('button');
+    let foobar;
+    //btn.onclick=()=>alert("clicked!");
+    btn.onclick = () => user();
+    function user() {
+        let squaresPerSide = prompt("How many squares per side?");
+    
+        gridSize(squaresPerSide);
+    }
+
+    function gridSize(input) {
+        console.log("grid size is: "+input);
+        let squareSize=(500/input)+"px";
+        let column="repeat("+input+",auto)";
+        console.log("column is : "+column);
+        console.log("square size is "+squareSize);
+        const gridContainer = document.querySelector('.grid-container');
+      gridContainer.style.gridTemplateColumns=column;
+      gridContainer.style.backgroundColor="blue";
+        for (let i = 0; i < (input*input); i++) {
+
+            const gridItem = document.createElement('div');
+            gridItem.classList = 'item';
+            gridItem.style.height=squareSize;
+            gridItem.style.width=squareSize;
+            gridContainer.appendChild(gridItem);
+        }
+
+        const gridItems = Array.from(document.querySelectorAll('.item'));
+    //gridItems.forEach(item=>console.log(item));
+    gridItems.forEach(divItem => divItem.addEventListener('mouseover', () => changeColor(divItem)));
+
+    function changeColor(e) {
+        e.style.backgroundColor = "green";
+    }
+
+    }
 
 
-for(let i=0;i<16;i++){
 
-const gridItem=document.createElement('div');
-gridItem.classList='item';
-gridContainer.appendChild(gridItem);
-}
 
-const gridItems=Array.from(document.querySelectorAll('.item'));
-//gridItems.forEach(item=>console.log(item));
-gridItems.forEach(divItem=>divItem.addEventListener('mouseover', ()=>changeColor(divItem)));
 
-function changeColor(e){
-  e.style.backgroundColor="green";
-}
+  
 
 </script>
 
