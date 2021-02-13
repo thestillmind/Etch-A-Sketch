@@ -78,12 +78,20 @@
     }
 
     function gridSize(input) {
+        const gridContainer = document.querySelector('.grid-container');
+
+     //This while loop removes any child nodes that have previously been created
+while (gridContainer.firstChild) {
+  gridContainer.removeChild(gridContainer.firstChild);
+}
+
+
         console.log("grid size is: "+input);
         let squareSize=(500/input)+"px";
         let column="repeat("+input+",auto)";
         console.log("column is : "+column);
         console.log("square size is "+squareSize);
-        const gridContainer = document.querySelector('.grid-container');
+       
       gridContainer.style.gridTemplateColumns=column;
       gridContainer.style.backgroundColor="blue";
         for (let i = 0; i < (input*input); i++) {
