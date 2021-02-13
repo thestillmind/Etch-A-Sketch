@@ -9,6 +9,7 @@
     <meta charset="UTF-8">
     <meta id="metaDescrip" name="description"
         content="This a recreation of the etch-a-sketch toy, but now it's on a web page!">
+        <link rel="stylesheet" href="style.css">
     <style>
         @font-face {
             font-family: 'Ubuntu', sans-serif;
@@ -28,9 +29,13 @@
             box-sizing: border-box;
         }
 
+        h1 {
+            text-align: center;
+        }
         .grid-container {
-            width:210px;
-            height:210px;
+            margin:auto;
+            width:600px;
+            height:600px;
             display: grid;
             grid-template-columns: repeat(4,auto);
          }
@@ -44,9 +49,10 @@
 
 </head>
 
-<h1>Etch-a-Sketch!</h1>
 
+<h1>Etch-a-Sketch!</h1>
 <main>
+   
     <div class="grid-container">
 
        <!-- <div class="item"></div>
