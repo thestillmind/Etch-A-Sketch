@@ -43,11 +43,11 @@
             width: 500px;
             height: 500px;
             display: grid;
-         
+
         }
 
         .item {
-           
+
             background-color: red;
         }
     </style>
@@ -73,51 +73,59 @@
     btn.onclick = () => user();
     function user() {
         let squaresPerSide = prompt("How many squares per side?");
-    
+
         gridSize(squaresPerSide);
     }
 
     function gridSize(input) {
         const gridContainer = document.querySelector('.grid-container');
 
-     //This while loop removes any child nodes that have previously been created
-while (gridContainer.firstChild) {
-  gridContainer.removeChild(gridContainer.firstChild);
-}
+        //This while loop removes any child nodes that have previously been created
+        while (gridContainer.firstChild) {
+            gridContainer.removeChild(gridContainer.firstChild);
+        }
 
+        let squareSize = (500 / input) + "px";
+        let column = "repeat(" + input + ",auto)";
 
-        console.log("grid size is: "+input);
-        let squareSize=(500/input)+"px";
-        let column="repeat("+input+",auto)";
-        console.log("column is : "+column);
-        console.log("square size is "+squareSize);
-       
-      gridContainer.style.gridTemplateColumns=column;
-      gridContainer.style.backgroundColor="blue";
-        for (let i = 0; i < (input*input); i++) {
+        gridContainer.style.gridTemplateColumns = column;
+
+        for (let i = 0; i < (input * input); i++) {
 
             const gridItem = document.createElement('div');
             gridItem.classList = 'item';
-            gridItem.style.height=squareSize;
-            gridItem.style.width=squareSize;
+            gridItem.style.height = squareSize;
+            gridItem.style.width = squareSize;
             gridContainer.appendChild(gridItem);
         }
 
         const gridItems = Array.from(document.querySelectorAll('.item'));
-    //gridItems.forEach(item=>console.log(item));
-    gridItems.forEach(divItem => divItem.addEventListener('mouseover', () => changeColor(divItem)));
+      //  gridItems.forEach(divItem => divItem.addEventListener('mouseover', () => changeColor(divItem)));
+      gridItems.forEach(divItem => divItem.addEventListener('mouseover', () => randomColor(divItem)));
 
-    function changeColor(e) {
-        e.style.backgroundColor = "green";
+        function changeColor(e) {
+            //e.style.backgroundColor = "green";
+            e.style.backgroundColor = "rgb(194,183,227)";
+        }
+
+
+        function randomColor(e) {
+        function random() {
+            return Math.floor(Math.random() * 255);
+        }
+
+       // return `rgb(${random()},${random()},${random()})`;
+      // return random();
+      e.style.backgroundColor = `rgb(${random()},${random()},${random()})`;
+      
     }
-
-    }
-
-
-
-
-
   
+
+    }
+
+   
+
+    
 
 </script>
 
