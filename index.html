@@ -100,8 +100,8 @@
         }
 
         const gridItems = Array.from(document.querySelectorAll('.item'));
-      //  gridItems.forEach(divItem => divItem.addEventListener('mouseover', () => changeColor(divItem)));
-      gridItems.forEach(divItem => divItem.addEventListener('mouseover', () => randomColor(divItem)));
+        //  gridItems.forEach(divItem => divItem.addEventListener('mouseover', () => changeColor(divItem)));
+        gridItems.forEach(divItem => divItem.addEventListener('mouseover', () => black(divItem)));
 
         function changeColor(e) {
             //e.style.backgroundColor = "green";
@@ -110,22 +110,34 @@
 
 
         function randomColor(e) {
-        function random() {
-            return Math.floor(Math.random() * 255);
+
+            function random() {
+                return Math.floor(Math.random() * 255);
+            }
+
+            // return `rgb(${random()},${random()},${random()})`;
+            // return random();
+            e.style.backgroundColor = `rgb(${random()},${random()},${random()})`;
         }
 
-       // return `rgb(${random()},${random()},${random()})`;
-      // return random();
-      e.style.backgroundColor = `rgb(${random()},${random()},${random()})`;
-      
-    }
-  
+        let foo = 0;
+        function black(e) {
+            console.log(foo);
+            function random() {
+                return Math.floor(Math.random() * 255);
+            }
+
+            // e.style.backgroundColor = `rgb(${random()},${random()},${random()})`;      
+            e.style.backgroundColor = `rgb(${(random() - foo)},${(random() - foo)},${(random() - foo)})`;
+
+            foo += 25;
+        }
 
     }
 
-   
 
-    
+
+
 
 </script>
 
